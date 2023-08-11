@@ -28,3 +28,14 @@ variable "private_subnets_cidr" {
   type        = list(any)
   description = "The CIDR block for the private subnet"
 }
+
+variable "trainee-instance" {
+  type        = list(any)
+  description = " The available trainee instance"
+}
+
+variable "key_name" {
+  description = "Key to access the EC2 instance"
+  type        = string
+  default     = "terraform-nginx"
+}

@@ -23,3 +23,13 @@ module "network" {
   public_subnets_cidr  = var.public_subnets_cidr
   private_subnets_cidr = var.private_subnets_cidr
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+
+  author           = var.author
+  project          = var.project
+  region           = var.region
+  trainee-instance = var.trainee-instance
+  key_name         = var.key_name
+}
