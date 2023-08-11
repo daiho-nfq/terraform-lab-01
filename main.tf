@@ -33,3 +33,7 @@ module "ec2" {
   trainee-instance = var.trainee-instance
   key_name         = var.key_name
 }
+
+module "route53" {
+  source = "./modules/route53"
+}
