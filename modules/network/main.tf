@@ -9,6 +9,7 @@ resource "aws_vpc" "trainee-vpc" {
   }
 }
 
+/* Init 2 private sub net */
 resource "aws_subnet" "private_subnet" {
   vpc_id                  = aws_vpc.trainee-vpc.id
   count                   = length(var.availability_zones)
@@ -20,6 +21,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
+/* Init 2 public sub-net */
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.trainee-vpc.id
   count                   = length(var.availability_zones)
@@ -36,6 +38,7 @@ resource "aws_security_group" "default_http" {
   description = "Default security group for connecting between ALB and app/services via HTTP"
   vpc_id      = aws_vpc.trainee-vpc.id
 
+// Sec rule for port 443
   ingress {
     from_port        = 443
     to_port          = 443
@@ -43,6 +46,7 @@ resource "aws_security_group" "default_http" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+// Sec rule for port 22
   ingress {
     from_port        = 22
     to_port          = 22
@@ -50,6 +54,7 @@ resource "aws_security_group" "default_http" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+// Sec rule for port 80
   ingress {
     from_port        = 80
     to_port          = 80

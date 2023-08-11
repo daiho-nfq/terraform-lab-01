@@ -9,3 +9,7 @@ output "ec2" {
 output "route53" {
   value = module.route53
 }
+
+output "s3" {
+  value = module.s3
+}

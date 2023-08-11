@@ -1,11 +1,11 @@
 /*==== The ROUTE ======*/
 resource "aws_route53_zone" "trainee_zone" {
-  name     = "trainee.devops.nfq.asia"
+  name     = var.aws_route53_zone_name
 }
 
 resource "aws_route53_record" "trainee_record" {
   allow_overwrite = true
-  name            = "trainee.devops.nfq.asia"
+  name            = var.aws_route53_zone_name
   ttl             = 3600
   type            = "NS"
   zone_id         = aws_route53_zone.trainee_zone.zone_id
